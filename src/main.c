@@ -26,12 +26,12 @@ int main(){
       }
 
     else if(atoi(palavra) != 0 && (palavra[strlen(palavra) -1] != '!') && (final_test(palavra) != 1)){ /*Vê se é possível converter de string pra float*/
-      soma += atoi(palavra);
+      soma += atoi(palavra);                /*Se for um numero puro, soma*/
     }
     else {
       tam = strlen(palavra);
       if(tam != 1){
-        if(palavra[tam-1] == '!'){
+        if(palavra[tam-1] == '!'){    /*Verifica se ultimo algarismo eh "!", se for, retira da string e calcula o fatorial*/
         palavra[tam-1] = '\0';
           if(atoi(palavra) != 0){
             soma += fatorial(atoi(palavra));
@@ -57,7 +57,9 @@ int fatorial(int num){ /*Funcao para calcular fatorial de um numero*/
   }
 }
 
-int final_test(char num[MAX]){
+/* Funcao foi feita devido as funcoes atoi e atof, pois se for numero seguido de palavra,
+  as funcoes ignoram as letras e transformam apenas os primeiros numeros em int e float */
+int final_test(char num[MAX]){ /*funcao verifica se nao eh um numero seguido de letras sem espaco*/
   int tam = strlen(num);
   for(int i = 0; i<tam; i++){
     if((num[i] < 46 || num[i] > 57) || num[i] == '!'){
